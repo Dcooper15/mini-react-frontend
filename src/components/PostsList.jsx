@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Route, Link } from "react-router-dom";
+import PostSolo from "./PostSolo";
 
 
 
-
-const Posts = (props) => {
-    const [post, setPost] = useState([]);
+const PostsList = (props) => {
+    const [posts, setPost] = useState([]);
 
     useEffect(() => {
         (async function () {
@@ -19,20 +20,28 @@ const Posts = (props) => {
         return (
         <>
             <h1>These are posts from my database</h1>
+            <Route exact path="/">
            <div>
-           {post.map((post) => {
+           {posts.map((post) => {
               return (
                   <li key={post.id}>
-                      {post.content}
+                      {post.title}
+                <Link to={`/post/${post.id}`}>View Post</Link>
+            
                       
                   </li>
               );
             })}
            </div>
+           </Route>
+           <Route path={`/post/:post_id`}>
+                <Link to="/">Return to List</Link>
+              <PostSolo posts={posts} />
+          </Route>
         </>
        
        )
     
 }
 
-export default Posts;
+export default PostsList;
