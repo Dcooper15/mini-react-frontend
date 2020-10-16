@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { loadData } from "../utils/loadData";
+
 
 
 
@@ -20,14 +20,14 @@ const Posts = (props) => {
         <>
             <h1>These are posts from my database</h1>
            <div>
-           {/* {data.map((post) => {
+           {post.map((post) => {
               return (
                   <li key={post.id}>
                       {post.content}
                       
                   </li>
               );
-            })} */}
+            })}
            </div>
         </>
        
